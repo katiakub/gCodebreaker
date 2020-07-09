@@ -1,7 +1,8 @@
 module Codebreaker
   class Output
     def initialize
-      I18n.load_path << Dir[File.expand_path('./lib/codebreaker/data/locales') + '/*.yml']
+      I18n.load_path << Dir[File.expand_path(File.join(File.dirname(__FILE__), 'data/locales/')) + '/*.yml']
+      I18n.config.available_locales = :en
     end
 
     def greeting
@@ -67,7 +68,7 @@ module Codebreaker
     end
 
     def goodbye
-      I18n(:goodbye)
+      puts I18n.t(:goodbye)
     end
 
     def game_over

@@ -8,7 +8,6 @@
   rules: "GAME RULES:\n
          # Codebreaker is a logic game in which a code-breaker tries to break a secret code created by a code-maker. The\n codemaker, which will be played by the application we’re going to write, creates a secret code.\n
           # The codebreaker gets some number of chances to break the code (depends on chosen difficulty). In each turn, the\n codebreaker makes a guess. The codemaker then marks the guess with special symbols.\n
-          Number of minuses - 2 (second and fourth position)\n
           # If codebreaker inputs the exact number as a secret number - codebreaker wins the game. If all attempts are spent - codebreaker loses.\n
           # Codebreaker also has some number of hints(depends on chosen difficulty). If a user takes a hint - he receives back a\n 
           separate digit of the secret code.\n

@@ -1,12 +1,18 @@
 module Codebreaker
   class Output
+    attr_reader :stats
     def initialize
       I18n.load_path << Dir[File.expand_path(File.join(File.dirname(__FILE__), 'data/locales/')) + '/*.yml']
       I18n.config.available_locales = :en
+      @stats = Codebreaker::Loader.load('stat')
     end
 
     def greeting
       puts I18n.t(:hey)
+    end
+
+    def available_commands
+      puts I18n.t(:available_commands)
     end
 
     def choose_name
@@ -22,11 +28,15 @@ module Codebreaker
     end
 
     def show_stats
-      stats.each do |game|
+      @stats.each do |game|
         puts "Hey, #{game[:name]}
-        Chosen difficulty: #{game[:difficulty]}
         Attempts: #{game[:attempts]}
-        Hints: #{game[:hints]}"
+        Hints: #{game[:hints]}
+        Code: #{game[:code]}
+        Chosen difficulty: #{game[:difficulty]}
+        Unused attempts: #{game[:attempts_left]}
+        Unused hints: #{game[:hints_left]}
+        Win: #{game[:win]}"
       end
     end
 

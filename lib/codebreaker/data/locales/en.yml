@@ -5,6 +5,7 @@
   - Load game statistics - puts 'stats'\n
   - Exit from game - puts 'exit'\n"
   goodbye: "Bye bye!\n"
+  available_commands: "Enter 'start', 'rules', 'stats' or 'exit'"
   rules: "GAME RULES:\n
          # Codebreaker is a logic game in which a code-breaker tries to break a secret code created by a code-maker. The\n codemaker, which will be played by the application we’re going to write, creates a secret code.\n
           # The codebreaker gets some number of chances to break the code (depends on chosen difficulty). In each turn, the\n codebreaker makes a guess. The codemaker then marks the guess with special symbols.\n

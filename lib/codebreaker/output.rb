@@ -27,16 +27,23 @@ module Codebreaker
       puts I18n.t(:rules)
     end
 
+    def sort_stats
+      @stats = @stats.sort_by do |game|
+        [game[:attempts], game[:used_attempts],
+         game[:used_hints]]
+      end
+    end
+
     def show_stats
-      @stats.each do |game|
+      sort_stats
+      @stats.each_with_index do |game, index|
         puts "Hey, #{game[:name]}
+        Rating: #{index + 1}
         Attempts: #{game[:attempts]}
         Hints: #{game[:hints]}
-        Code: #{game[:code]}
         Chosen difficulty: #{game[:difficulty]}
-        Unused attempts: #{game[:attempts_left]}
-        Unused hints: #{game[:hints_left]}
-        Win: #{game[:win]}"
+        Used attempts: #{game[:used_attempts]}
+        Used hints: #{game[:used_hints]}"
       end
     end
 

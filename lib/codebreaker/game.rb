@@ -76,8 +76,8 @@ module Codebreaker
         attempts: difficulty_option[:attempts],
         hints: difficulty_option[:hints],
         code: @code,
-        attempts_left: @attempts_left,
-        hints_left: @hints_left,
+        used_attempts: difficulty_option[:attempts] - @attempts_left,
+        used_hints: difficulty_option[:hints] - @hints_left,
         win: win?
       }
     end

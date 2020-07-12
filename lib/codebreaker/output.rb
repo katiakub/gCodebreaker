@@ -68,6 +68,10 @@ module Codebreaker
       puts I18n.t(:wrong_difficulty)
     end
 
+    def enter_guess
+      puts I18n.t(:enter_guess)
+    end
+
     def wrong_input
       puts I18n.t(:wrong_input)
     end

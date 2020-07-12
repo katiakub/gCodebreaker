@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    codebreaker_kub (0.1.7)
+    codebreaker_kub (0.1.8)
 
 GEM
   remote: https://rubygems.org/
@@ -65,7 +65,7 @@ DEPENDENCIES
   fasterer (~> 0.8)
   i18n (~> 1.8)
   rake (~> 12.0)
-  rspec (~> 3.0)
+  rspec (~> 3.9)
   rubocop (~> 0.87)
   simplecov (~> 0.18)
 

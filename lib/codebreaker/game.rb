@@ -1,10 +1,17 @@
 module Codebreaker
   class Game
     attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
-
+    attr_reader :minuse, :plus, :none
     def initialize
       @difficulties = Codebreaker::Loader.load('difficulties')
       @code = generate_code
+      symbols
+    end
+
+    def symbols(minuse = '-', plus = '+', none = '')
+      @minuse = minuse
+      @plus = plus
+      @none = none
     end
 
     def game_option(name, difficulty)
@@ -50,11 +57,13 @@ module Codebreaker
     def check_input(code = @code.chars)
       input = @input_code.chars
       minuses = (code & input).map { |element| [code.count(element), input.count(element)].min }.sum
-      result = '-' * minuses
+      result = @minuse * minuses
       input.each.with_index do |element, index|
-        result.sub!('-', '+') if element == code[index]
+        result.sub!(@minuse, @plus) if element == code[index]
       end
-      result
+      return result unless result.empty?
+
+      @none
     end
 
     def generate_code

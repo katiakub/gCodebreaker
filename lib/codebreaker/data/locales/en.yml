@@ -19,6 +19,7 @@
   wrong_difficulty: "There is no such level. Select from available, please"
   get_hint: "You can choose get hint - puts 'hint'"
   no_hints: "You have no hints"
+  enter_guess: "Enter your guess, please"
   wrong_input: "Your input is invalid or there is no such command."
   win: "YOU WIN!"
   lose: "You lose, sorry("

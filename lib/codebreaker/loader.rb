@@ -4,9 +4,12 @@ module Codebreaker
     EXTENCTION = '.yml'.freeze
     def self.load(file_name)
       file_name = PATH + file_name + EXTENCTION.to_s
-      raise LoadError, 'No such file to load' unless File.exist?(file_name)
-
-      YAML.load_file(file_name)
+      if File.exist?(file_name)
+        YAML.load_file(file_name)
+      else
+        File.new(file_name, 'w')
+        []
+      end
     end
 
     def self.save(obj, file_name)

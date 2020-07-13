@@ -4,7 +4,7 @@ module Codebreaker
     def initialize
       I18n.load_path << Dir[File.expand_path(File.join(File.dirname(__FILE__), 'data/locales/')) + '/*.yml']
       I18n.config.available_locales = :en
-      @stats = Codebreaker::Loader.load('stat')
+      @stats = Codebreaker::Loader.load('stats')
     end
 
     def greeting
@@ -57,7 +57,6 @@ module Codebreaker
 
     def no_hints
       puts I18n.t(:no_hints)
-      puts I18n.t(:code)
     end
 
     def choose_difficulty
@@ -82,6 +81,7 @@ module Codebreaker
 
     def lose
       puts I18n.t(:lose)
+      puts I18n.t(:code)
     end
 
     def save_result
@@ -90,10 +90,6 @@ module Codebreaker
 
     def goodbye
       puts I18n.t(:goodbye)
-    end
-
-    def game_over
-      puts I18n.t(:game_over)
     end
   end
 end

@@ -49,7 +49,7 @@ module Codebreaker
     end
 
     def save
-      Codebreaker::Loader.save(to_h, 'stat')
+      Codebreaker::Loader.save(to_h, 'stats')
     end
 
     private

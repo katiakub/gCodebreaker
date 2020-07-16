@@ -7,9 +7,6 @@ Style/Documentation:
 Layout/LineLength:
   Max: 110
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Metrics/BlockLength:
   Enabled: false
   

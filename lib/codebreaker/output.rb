@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Codebreaker
   class Output
     attr_reader :stats

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Codebreaker
   module Loader
     PATH = File.join(File.dirname(__FILE__), 'data/').freeze
-    EXTENCTION = '.yml'.freeze
+    EXTENCTION = '.yml'
     def self.load(file_name)
       file_name = PATH + file_name + EXTENCTION.to_s
       if File.exist?(file_name)

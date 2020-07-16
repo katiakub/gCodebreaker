@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 module Codebreaker
   class Game
+    CODE_LENGTH = 4
+    CODE_RANGE = (1..6).freeze
     attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
     attr_reader :minuse, :plus, :none
     def initialize
@@ -67,11 +71,12 @@ module Codebreaker
     end
 
     def generate_code
-      Array.new(4) { rand(1..6) }.join
+      Array.new(CODE_LENGTH) { rand(CODE_RANGE) }.join
     end
 
     def generate_hint
-      @code.chars.shuffle.pop
+      hint_code = @code.chars.shuffle
+      hint_code.pop
     end
 
     def difficulty_option
@@ -86,8 +91,7 @@ module Codebreaker
         hints: difficulty_option[:hints],
         code: @code,
         used_attempts: difficulty_option[:attempts] - @attempts_left,
-        used_hints: difficulty_option[:hints] - @hints_left,
-        win: win?
+        used_hints: difficulty_option[:hints] - @hints_left
       }
     end
   end

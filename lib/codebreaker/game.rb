@@ -5,10 +5,11 @@ module Codebreaker
     CODE_LENGTH = 4
     CODE_RANGE = (1..6).freeze
     attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
-    attr_reader :minuse, :plus, :none
+    attr_reader :minuse, :plus, :none, :hints_code
     def initialize
       @difficulties = Codebreaker::Loader.load('difficulties')
       @code = generate_code
+      @hints_code = @code.chars.shuffle
       symbols
     end
 
@@ -75,8 +76,7 @@ module Codebreaker
     end
 
     def generate_hint
-      hint_code = @code.chars.shuffle
-      hint_code.pop
+      @hints_code.pop
     end
 
     def difficulty_option

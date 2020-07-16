@@ -15,8 +15,7 @@ module Codebreaker
     end
 
     it 'generates hint' do
-      game.code = '1234'
-      expect(game.code).to include(game.send(:generate_hint))
+      expect(game.hints_code).to include(game.send(:generate_hint))
     end
 
     it 'code should not be empty' do

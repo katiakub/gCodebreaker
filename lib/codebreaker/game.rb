@@ -5,7 +5,7 @@ module Codebreaker
     include Codebreaker::GuessChecker
 
     attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
-    attr_reader :minuse, :plus, :none, :hints_code
+    attr_reader :hints_code
 
     CODE_LENGTH = 4
     CODE_RANGE = (1..6).freeze
@@ -36,6 +36,7 @@ module Codebreaker
     end
 
     def input_operation(input_code)
+      @input_code = input_code
       return unless attempts_left?
 
       @attempts_left -= 1

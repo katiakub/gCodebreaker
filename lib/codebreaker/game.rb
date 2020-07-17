@@ -2,21 +2,19 @@
 
 module Codebreaker
   class Game
-    CODE_LENGTH = 4
-    CODE_RANGE = (1..6).freeze
+    include Codebreaker::GuessChecker
+
     attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
     attr_reader :minuse, :plus, :none, :hints_code
+
+    CODE_LENGTH = 4
+    CODE_RANGE = (1..6).freeze
+
     def initialize
       @difficulties = Codebreaker::Loader.load('difficulties')
       @code = generate_code
       @hints_code = @code.chars.shuffle
       symbols
-    end
-
-    def symbols(minuse = '-', plus = '+', none = '')
-      @minuse = minuse
-      @plus = plus
-      @none = none
     end
 
     def game_option(name, difficulty)
@@ -34,23 +32,22 @@ module Codebreaker
     end
 
     def hints_left?
-      @hints_left.positive?
+      hints_left.positive?
     end
 
     def input_operation(input_code)
-      @input_code = input_code
       return unless attempts_left?
 
       @attempts_left -= 1
-      check_input
+      check_input(@code, input_code)
     end
 
     def attempts_left?
-      @attempts_left.positive?
+      attempts_left.positive?
     end
 
     def win?
-      @input_code == @code
+      input_code == code
     end
 
     def save
@@ -58,18 +55,6 @@ module Codebreaker
     end
 
     private
-
-    def check_input(code = @code.chars)
-      input = @input_code.chars
-      minuses = (code & input).map { |element| [code.count(element), input.count(element)].min }.sum
-      result = @minuse * minuses
-      input.each.with_index do |element, index|
-        result.sub!(@minuse, @plus) if element == code[index]
-      end
-      return result unless result.empty?
-
-      @none
-    end
 
     def generate_code
       Array.new(CODE_LENGTH) { rand(CODE_RANGE) }.join

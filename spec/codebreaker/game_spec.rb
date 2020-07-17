@@ -42,13 +42,13 @@ module Codebreaker
     it 'win?' do
       game.input_code = '1234'
       game.code = '1234'
-      expect(game.send(:win?)).to be true
+      expect(game.win?).to be true
     end
 
     it 'lose?' do
       game.input_code = '2345'
       game.code = '1234'
-      expect(game.send(:win?)).to be false
+      expect(game.win?).to be false
     end
 
     context 'check result' do
@@ -66,10 +66,7 @@ module Codebreaker
         ['1234', '1234', '++++']
       ].each do |item|
         it 'returns correct result depends on input' do
-          game.send(:game_option, 'Katie', :easy)
-          game.code = item[0]
-          game.send(:input_operation, item[1])
-          expect(game.send(:check_input)).to eq item[2]
+          expect(game.send(:check_input, item[0], item[1])).to eq item[2]
         end
       end
     end

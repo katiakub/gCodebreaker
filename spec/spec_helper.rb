@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+require 'simplecov'
 require 'bundler/setup'
 require 'codebreaker'
-require 'simplecov'
 require 'yaml'
 
 SimpleCov.start

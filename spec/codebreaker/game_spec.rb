@@ -50,25 +50,5 @@ module Codebreaker
       game.code = '1234'
       expect(game.win?).to be false
     end
-
-    context 'check result' do
-      [
-        ['6543', '5643', '++--'],
-        ['6543', '6411', '+-'],
-        ['6543', '6544', '+++'],
-        ['6543', '3456', '----'],
-        ['6543', '6666', '+'],
-        ['6543', '2666', '-'],
-        ['6543', '2222', ''],
-        ['6666', '1661', '++'],
-        ['1234', '3124', '+---'],
-        ['1234', '1524', '++-'],
-        ['1234', '1234', '++++']
-      ].each do |item|
-        it 'returns correct result depends on input' do
-          expect(game.send(:check_input, item[0], item[1])).to eq item[2]
-        end
-      end
-    end
   end
 end

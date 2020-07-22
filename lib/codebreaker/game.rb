@@ -2,8 +2,6 @@
 
 module Codebreaker
   class Game
-    include Codebreaker::GuessChecker
-
     attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
     attr_reader :hints_code
 
@@ -14,7 +12,6 @@ module Codebreaker
       @difficulties = Codebreaker::Loader.load('difficulties')
       @code = generate_code
       @hints_code = @code.chars.shuffle
-      symbols
     end
 
     def game_option(name, difficulty)
@@ -40,7 +37,7 @@ module Codebreaker
       return unless attempts_left?
 
       @attempts_left -= 1
-      check_input(@code, input_code)
+      check_input(@code, @input_code)
     end
 
     def attempts_left?
@@ -67,6 +64,12 @@ module Codebreaker
 
     def difficulty_option
       @difficulties[@difficulty]
+    end
+
+    def check_input(code, input)
+      guess_checker = Codebreaker::GuessChecker.new(code, input)
+      guess_checker.symbols
+      guess_checker.check_input
     end
 
     def to_h

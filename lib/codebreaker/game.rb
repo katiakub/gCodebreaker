@@ -2,7 +2,8 @@
 
 module Codebreaker
   class Game
-    attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left
+    attr_accessor :input_code, :code, :name, :difficulties, :difficulty, :hints_left, :attempts_left, :all_hints,
+                  :all_attempts
     attr_reader :hints_code
 
     CODE_LENGTH = 4
@@ -17,6 +18,8 @@ module Codebreaker
     def game_option(name, difficulty)
       @name = name
       @difficulty = difficulty
+      @all_attempts = difficulty_option[:attempts]
+      @all_hints = difficulty_option[:hints]
       @attempts_left = difficulty_option[:attempts]
       @hints_left = difficulty_option[:hints]
     end
@@ -48,8 +51,8 @@ module Codebreaker
       input_code == code
     end
 
-    def save
-      Codebreaker::Loader.save(to_h, 'stats')
+    def save(filename = 'stats')
+      Codebreaker::Loader.save(to_h, filename)
     end
 
     private
@@ -76,11 +79,12 @@ module Codebreaker
       {
         name: @name,
         difficulty: @difficulty,
-        attempts: difficulty_option[:attempts],
-        hints: difficulty_option[:hints],
+        attempts: @all_attempts,
+        hints: @all_hints,
         code: @code,
-        used_attempts: difficulty_option[:attempts] - @attempts_left,
-        used_hints: difficulty_option[:hints] - @hints_left
+        used_attempts: @all_attempts - @attempts_left,
+        used_hints: @all_hints - @hints_left,
+        date: Time.now
       }
     end
   end

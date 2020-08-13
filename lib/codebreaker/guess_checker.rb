@@ -6,7 +6,7 @@ module Codebreaker
 
     MINUSE = '-'
     PLUS = '+'
-    NONE = ''
+    NONE = ' '
 
     def initialize(code, code_input)
       @code = code.chars

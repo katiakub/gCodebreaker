@@ -61,6 +61,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 2.1)
   codebreaker_kub!
   fasterer (~> 0.8)
   i18n (~> 1.8)

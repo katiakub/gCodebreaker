@@ -10,7 +10,7 @@ module Codebreaker
     CODE_RANGE = (1..6).freeze
 
     def initialize(name, difficulty)
-      @difficulties ||= Loader.load('difficulties')
+      @difficulties = Loader.load('difficulties')
       @code = generate_code
       @hints_code = @code.chars.shuffle
       game_option(name, difficulty)

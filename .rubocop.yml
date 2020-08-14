@@ -9,7 +9,3 @@ Layout/LineLength:
 
 Metrics/BlockLength:
   Enabled: false
-  
-Lint/DisjunctiveAssignmentInConstructor:
-  Enabled: false
-  

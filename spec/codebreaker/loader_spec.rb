@@ -11,7 +11,7 @@ module Codebreaker
     end
 
     it 'saves stat to file' do
-      path = 'lib/codebreaker/data/'
+      path = './'
       extenction = '.yml'
       file_name = 'rspec'
       Loader.send(:save, stat, file_name)

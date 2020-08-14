@@ -9,15 +9,16 @@ module Codebreaker
     CODE_LENGTH = 4
     CODE_RANGE = (1..6).freeze
 
-    def initialize
-      @difficulties = Codebreaker::Loader.load('difficulties')
+    def initialize(name, difficulty)
+      @difficulties ||= Loader.load('difficulties')
       @code = generate_code
       @hints_code = @code.chars.shuffle
+      game_option(name, difficulty)
     end
 
     def game_option(name, difficulty)
       @name = name
-      @difficulty = difficulty
+      @difficulty = difficulty.to_sym
       @all_attempts = difficulty_option[:attempts]
       @all_hints = difficulty_option[:hints]
       @attempts_left = difficulty_option[:attempts]

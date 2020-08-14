@@ -4,7 +4,7 @@ require_relative '../spec_helper'
 
 module Codebreaker
   RSpec.describe Game do
-    let(:game) { Game.new }
+    let(:game) { Game.new('Rspec', 'easy') }
 
     it 'difficulties should be a hash' do
       expect(game.difficulties).to be_an_instance_of(Hash)

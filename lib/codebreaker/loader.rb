@@ -4,8 +4,7 @@ module Codebreaker
   module Loader
     EXTENCTION = '.yml'
     def self.load(file_name)
-      path = File.expand_path("./data/#{file_name}", __dir__)
-      file_name = path + EXTENCTION.to_s
+      file_name = File.expand_path(file_name) + EXTENCTION.to_s
       if File.exist?(file_name)
         YAML.load_file(file_name)
       else
@@ -15,8 +14,7 @@ module Codebreaker
     end
 
     def self.save(obj, file_name)
-      path = File.expand_path("./data/#{file_name}", __dir__)
-      file_name = path + EXTENCTION.to_s
+      file_name = File.expand_path(file_name) + EXTENCTION.to_s
       stats = File.file?(file_name) && !File.zero?(file_name) ? YAML.load_file(file_name) : []
       stats << obj
       file = File.open(file_name, 'w')

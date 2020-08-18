@@ -21,7 +21,8 @@ module Codebreaker
 
     def check_input
       raw_result = mismatched
-      matched(raw_result)
+      matched_result = matched(raw_result)
+      check_result(matched_result)
     end
 
     private
@@ -38,6 +39,12 @@ module Codebreaker
       return result unless result.empty?
 
       @none
+    end
+
+    def check_result(result)
+      result = result.chars
+      result = result << @none until result.size == 4
+      result.join
     end
   end
 end

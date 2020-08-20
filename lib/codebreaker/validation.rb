@@ -8,7 +8,6 @@ module Codebreaker
     MIN_GUESS_RANGE = 1
     MAX_GUESS_RANGE = 6
 
-
     DIFFICULTIES = Loader.load('difficulties').keys
 
     def name_is_valid?(name)

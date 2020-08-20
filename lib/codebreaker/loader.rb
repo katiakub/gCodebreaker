@@ -16,7 +16,7 @@ module Codebreaker
     def self.load(file_name)
       path = File.join(File.dirname(__FILE__), 'data/')
       file_name = path + file_name + EXTENCTION.to_s
-      if File.exist?(file_name)
+      if File.exist?(file_name) && !File.zero?(file_name)
         YAML.load_file(file_name)
       else
         File.new(file_name, 'w')

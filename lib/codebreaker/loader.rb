@@ -25,7 +25,8 @@ module Codebreaker
     end
 
     def self.save(obj, file_name)
-      file_name = File.expand_path(file_name) + EXTENCTION.to_s
+      path = File.join(File.dirname(__FILE__), 'data/')
+      file_name = path + file_name + EXTENCTION.to_s
       stats = File.file?(file_name) && !File.zero?(file_name) ? YAML.load_file(file_name) : []
       stats << obj
       file = File.open(file_name, 'w')

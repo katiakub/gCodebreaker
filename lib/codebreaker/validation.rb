@@ -4,6 +4,10 @@ module Codebreaker
   module Validation
     MIN_NAME_LENGTH = 3
     MAX_NAME_LENGTH = 20
+    GUESS_LENGTH = 4
+    MIN_GUESS_RANGE = 1
+    MAX_GUESS_RANGE = 6
+
 
     DIFFICULTIES = Loader.load('difficulties').keys
 

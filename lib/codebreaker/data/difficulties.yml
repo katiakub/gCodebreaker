@@ -1,0 +1,9 @@
+:easy:
+  :hints: 2
+  :attempts: 15
+:medium:
+  :hints: 1
+  :attempts: 10
+:hell:
+  :hints: 1
+  :attempts: 5

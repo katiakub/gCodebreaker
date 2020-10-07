@@ -1,0 +1,4 @@
+.rvmrc
+/coverage/
+.rspec_status
+stats.yml
